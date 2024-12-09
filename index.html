@@ -1,0 +1,547 @@
+<html>
+   <head>
+	<title>  Tugas WEBGIS - Anisya Putri Awalia </title>
+   <!-- LEAFLET CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+   <style>
+	#map{
+		width: 100%;
+		height: 100vh;
+	}
+	</style>
+	</head> 
+	<body>
+		<div id="map"></div>
+	</body>
+</html>
+<!-- LEAFLET JAVASCRIPT -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src ="C:/webgis/titik.js"></script>
+<script>
+    <!-- LOKASI KAJIAN -->
+    var map = L.map('map').setView([-5.367016, 105.317890], 15);
+    <!-- BASEMAP OPENSTREETMAP -->
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+     });
+     osm.addTo(map);
+	 <!-- BASEMAP ESRI -->
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+Esri_WorldImagery.addTo(map);
+<!-- POSISI GEDUNG GKU 1 -->
+L.marker([  -5.360909, 105.310512]).addTo(map);
+<!-- POSISI GEDUNG GKU 2 -->
+L.marker([  -5.360267,105.314202]).addTo(map);
+<!-- POSISI GEDUNG  F -->
+L.marker([  -5.361355,105.313732]).addTo(map);
+<!-- POSISI GEDUNG  A -->
+L.marker([  -5.357948,105.314397]).addTo(map);
+<!-- POSISI GEDUNG  B -->
+L.marker([  -5.357924,105.315331]).addTo(map);
+<!-- POSISI GEDUNG  E -->
+L.marker([  -5.360033,105.315541]).addTo(map);
+<!-- POSISI GEDUNG  C dan D -->
+L.marker([  -5.358407,105.313694]).addTo(map);
+<!-- POSISI GEDUNG  Laboratorium 3 -->
+L.marker([  -5.360294,105.309135]).addTo(map);
+<!-- POSISI GEDUNG  Laboratorium 2 -->
+L.marker([  -5.361516,105.310534]).addTo(map);
+<!-- POSISI GEDUNG  Laboratorium 1 -->
+L.marker([  -5.360321,105.310236]).addTo(map);
+<!-- POSISI GEDUNG  Laboratorium OZT -->
+L.marker([  -5.362044,105.310544]).addTo(map);
+<!-- POSISI GEDUNG  Asrama TB1 -->
+L.marker([  -5.358414,105.317456]).addTo(map);
+<!-- POSISI GEDUNG  Asrama TB2 -->
+L.marker([  -5.358449,105.319444]).addTo(map);
+<!-- POSISI GEDUNG  Asrama TB3 -->
+L.marker([  -5.359123,105.319108]).addTo(map);
+<!-- POSISI GEDUNG  Asrama TB4 -->
+L.marker([  -5.359131,105.317503]).addTo(map);
+<!-- POSISI GEDUNG  Asrama TB5 -->
+L.marker([  -5.358468,105.318470]).addTo(map);
+<!-- POSISI GEDUNG  GSG -->
+L.marker([  -5.362422,105.318954]).addTo(map);
+<!-- POSISI GEDUNG  Poliklinik ITERA -->
+L.marker([  -5.357728,105.315966]).addTo(map);
+<!-- POSISI GEDUNG  Kantin BKL -->
+L.marker([  -5.357598,105.316519]).addTo(map);
+<!-- POSISI GEDUNG  RIMA -->
+L.marker([  -5.358613,105.321090]).addTo(map);
+<!-- POSISI GEDUNG  Masjid Raya At Tanwir -->
+L.marker([  -5.356767,105.318819]).addTo(map);
+<!-- POSISI GEDUNG  Masjid Baitul Ilmi  -->
+L.marker([  -5.359054,105.312624]).addTo(map);
+<!-- POSISI GEDUNG  Kantin RK -->
+L.marker([  -5.359432,105.312622]).addTo(map);
+<!-- POSISI GEDUNG  Embung A -->
+L.marker([  -5.357822,105.312614]).addTo(map);
+<!-- POSISI GEDUNG  Embung B -->
+L.marker([  -5.359044,105.308088]).addTo(map);
+<!-- POSISI GEDUNG  Embung C -->
+L.marker([  -5.359404,105.313704]).addTo(map);
+<!-- POSISI GEDUNG  Embung D -->
+L.marker([  -5.360221,105.320753]).addTo(map);
+<!-- POSISI GEDUNG  Embung E -->
+L.marker([  -5.365216,105.316825]).addTo(map);
+<!-- POSISI  Embung SUMATERA -->
+L.marker([  -5.370186,105.310329]).addTo(map);
+<!-- POSISI  Labirin -->
+L.marker([   -5.369667,105.312161]).addTo(map);
+<!-- BUNDARAN YANG SERING SAYA LANGGAR ATURAN SAAT BERLALU LINTAS DI ITERA -->
+var bundaran = L.circle([ -5.363156, 105.312634], {
+    color: 'blue',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 20
+}).addTo(map);
+<!-- BUNDARAN INI JUGA SERING SAYA LANGGAR SETELAH SELESAI KULIAH DI GKU 2 -->
+var bundaran = L.circle([-5.360813, 105.314847], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+
+<!-- POLIGON BANGUNAN  GEDUNG F -->
+var polygon = L.polygon([
+    [ -5.361303, 105.314078],
+    [ -5.361458, 105.314102],
+    [ -5.361504, 105.313286],
+    [ -5.361308, 105.313279]
+], {
+    color: 'blue',
+    fillColor: '#00FFFF',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG GKU1 -->
+var polygon = L.polygon([
+    [  -5.360817, 105.311009],
+    [   -5.361037, 105.311009],
+    [  -5.361053, 105.309974],
+    [  -5.360823, 105.309967]
+], {
+    color: 'blue',
+    fillColor: '#FAEBD7',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG A -->
+var polygon = L.polygon([
+    [-5.357718, 105.314305],
+    [-5.357715, 105.314493],
+    [-5.358095, 105.314498],
+    [-5.358092, 105.314293]
+], {
+    color: 'blue',
+    fillColor: '#FFE4C4',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG B -->
+var polygon = L.polygon([
+    [-5.357715, 105.315243],
+    [-5.357713, 105.315412],
+    [-5.358076, 105.315425],
+    [-5.358074, 105.315236]
+]).addTo(map);
+<!-- POLIGON BANGUNAN  C dan D -->
+var polygon = L.polygon([
+    [-5.358385, 105.313267],
+    [-5.358378, 105.313448],
+    [-5.358345, 105.313444],
+    [-5.358360, 105.314091],
+    [-5.358497, 105.313952],
+    [-5.358495, 105.313569],
+    [-5.358927, 105.313575],
+    [-5.359113, 105.313380],
+    [-5.358534, 105.313391],
+    [-5.358537, 105.313270]
+], {
+    color: 'blue',
+    fillColor: '#0000FF',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG E -->
+var polygon = L.polygon([
+    [-5.359800, 105.315833],
+    [-5.359960, 105.315833],
+    [-5.359961, 105.315574],
+    [-5.360475, 105.315575],
+    [-5.360478, 105.315403],
+    [-5.359634, 105.315403],
+    [-5.359635, 105.315576],
+    [-5.359800, 105.315576]
+], {
+    color: 'blue',
+    fillColor: '#A52A2A',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  Labtek 1 -->
+var polygon = L.polygon([
+    [-5.360215, 105.309929],
+    [-5.360216, 105.310433],
+    [-5.360384, 105.310438],
+    [-5.360384, 105.310375],
+    [-5.360448, 105.310365],
+    [-5.360448, 105.309916]
+], {
+    color: 'blue',
+    fillColor: '#5F9EA0',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG Labtek 2 -->
+var polygon = L.polygon([
+    [-5.361440, 105.309939],
+    [-5.361445, 105.310899],
+    [-5.361616, 105.310906],
+    [-5.361620, 105.309943]
+],{
+    color: 'blue',
+    fillColor: '#D2691E',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG Labtek 3 -->
+var polygon = L.polygon([
+    [-5.360169, 105.308755],
+    [-5.360178, 105.309415],
+    [-5.360439, 105.309417],
+    [-5.360437, 105.308750]
+], {
+    color: 'blue',
+    fillColor: '#DC143C',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG ASRAMA TB 1 -->
+var polygon = L.polygon([
+    [-5.358367, 105.317144],
+    [-5.358365, 105.317645],
+    [-5.358550, 105.317647],
+    [-5.358551, 105.317144]
+], {
+    color: 'blue',
+    fillColor: '#00008B',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG ASRAMA TB 2 -->
+var polygon = L.polygon([
+    [-5.358399, 105.319145],
+    [-5.358399, 105.319635],
+    [-5.358585, 105.319646],
+    [-5.358585, 105.319138]
+], {
+    color: 'blue',
+    fillColor: '#B8860B',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG ASRAMA TB 3 -->
+var polygon = L.polygon([
+    [-5.359099, 105.318724],
+    [-5.359099, 105.319306],
+    [-5.359235, 105.319314],
+    [-5.359235, 105.318729]
+], {
+    color: 'blue',
+    fillColor: '#BDB76B',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG ASRAMA TB 4 -->
+var polygon = L.polygon([
+    [-5.359078, 105.317118],
+    [-5.359079, 105.317712],
+    [-5.359209, 105.317725],
+    [-5.359200, 105.317116]
+], {
+    color: 'blue',
+    fillColor: '#8B008B',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG SERBAGUNA -->
+var polygon = L.polygon([
+    [-5.362244, 105.318796],
+    [-5.362255, 105.319005],
+    [-5.362656, 105.319031],
+    [-5.362666, 105.318799]
+], {
+    color: 'blue',
+    fillColor: '#FF8C00',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  POLIKLINIK ITERA -->
+var polygon = L.polygon([
+    [-5.357665, 105.315929],
+    [ -5.357665, 105.315954],
+    [ -5.357689, 105.315957],
+    [ -5.357688, 105.316007],
+    [ -5.357795, 105.316015],
+    [ -5.357800, 105.315928]
+], {
+    color: 'blue',
+    fillColor: '#8B0000',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG Kantin RK -->
+var polygon = L.polygon([
+    [-5.359280, 105.312455],
+    [-5.359275, 105.312828],
+    [-5.359623, 105.312828],
+    [-5.359617, 105.312450]
+], {
+    color: 'blue',
+    fillColor: '#E9967A',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  Kantin BKL -->
+var polygon = L.polygon([
+    [-5.357505, 105.316223],
+    [-5.357500, 105.316345],
+    [-5.357450, 105.316347],
+    [-5.357455, 105.316678],
+    [-5.357688, 105.316678],
+    [-5.357703, 105.316365],
+    [-5.357635, 105.316363],
+    [-5.357636, 105.316235]
+], {
+    color: 'blue',
+    fillColor: '#9400D3',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  Masjid At Tanwir -->
+var polygon = L.polygon([
+    [-5.356599, 105.318732],
+    [-5.356740, 105.318988],
+    [-5.357015, 105.318844],
+    [-5.356919, 105.318626],
+    [-5.356872, 105.318653],
+    [-5.356861, 105.318606]
+], {
+    color: 'blue',
+    fillColor: '#FF00FF',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG Masjid Baitul Ilmi -->
+var polygon = L.polygon([
+    [-5.359119, 105.312467],
+    [-5.359214, 105.312659],
+    [-5.359016, 105.312745],
+    [-5.358927, 105.312560]
+], {
+    color: 'blue',
+    fillColor: '#FF00FF',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+
+<!-- MENAMPILKAN NAMA GEDUNG GKU 1 -->
+    var GKU1 = L.marker([-5.360909, 105.310512]);
+    var namagku1 = GKU1.bindPopup("Gedung GKU 1").openPopup()
+    namagku1.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG GKU 2 -->
+    var GKU2 = L.marker([-5.360267,105.314202]);
+    var namagku2 = GKU2.bindPopup("Gedung GKU 2").openPopup()
+    namagku2.addTo(map);
+ <!-- MENAMPILKAN NAMA GEDUNG F -->
+    var F = L.marker([-5.361355,105.313732]);
+    var namaF = F.bindPopup("Gedung F").openPopup()
+    namaF.addTo(map);
+ <!-- MENAMPILKAN NAMA GEDUNG A -->
+    var A = L.marker([-5.357948,105.314397]);
+    var namaA = A.bindPopup("Gedung A").openPopup()
+    namaA.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG B -->
+    var B = L.marker([-5.357924,105.315331]);
+    var namaB = B.bindPopup("Gedung B").openPopup()
+    namaB.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG E -->
+    var E = L.marker([-5.360033,105.315541]);
+    var namaE = E.bindPopup("Gedung E").openPopup()
+    namaE.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG C dan D -->
+    var CdanD = L.marker([-5.358407,105.313694]);
+    var namaCdanD = CdanD.bindPopup("Gedung C dan D").openPopup()
+    namaCdanD.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Laboratorium 3 -->
+    var Laboratorium3 = L.marker([-5.360294,105.309135]);
+    var namaLaboratorium3 = Laboratorium3.bindPopup("Laboratorium 3").openPopup()
+    namaLaboratorium3.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Laboratorium 2 -->
+    var Laboratorium2 = L.marker([-5.361516,105.310534]);
+    var namaLaboratorium2 = Laboratorium2.bindPopup("Laboratorium 2").openPopup()
+    namaLaboratorium2.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Laboratorium 1 -->
+    var Laboratorium1 = L.marker([-5.360321,105.310236]);
+    var namaLaboratorium1 = Laboratorium1.bindPopup("Laboratorium 1").openPopup()
+    namaLaboratorium1.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Laboratorium OZT -->
+    var LaboratoriumOZT = L.marker([-5.362044,105.310544]);
+    var namaLaboratoriumOZT = LaboratoriumOZT.bindPopup("Laboratorium OZT").openPopup()
+    namaLaboratoriumOZT.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Asrama TB1 -->
+    var AsramaTB1 = L.marker([-5.358414,105.317456]);
+    var namaAsramaTB1 = AsramaTB1.bindPopup("Asrama TB1").openPopup()
+    namaAsramaTB1.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Asrama TB2 -->
+    var AsramaTB2 = L.marker([-5.358449,105.319444]);
+    var namaAsramaTB2 = AsramaTB2.bindPopup("Asrama TB2").openPopup()
+    namaAsramaTB2.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Asrama TB3 -->
+    var AsramaTB3 = L.marker([-5.359123,105.319108]);
+    var namaAsramaTB3 = AsramaTB3.bindPopup("Asrama TB3").openPopup()
+    namaAsramaTB3.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Asrama TB4 -->
+    var AsramaTB4 = L.marker([-5.359131,105.317503]);
+    var namaAsramaTB4 = AsramaTB4.bindPopup("Asrama TB4").openPopup()
+    namaAsramaTB4.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Asrama TB5 -->
+    var AsramaTB5 = L.marker([-5.358468,105.318470]);
+    var namaAsramaTB5 = AsramaTB5.bindPopup("Asrama TB5").openPopup()
+    namaAsramaTB4.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG GSG -->
+    var GSG = L.marker([-5.362422,105.318954]);
+    var namaGSG = GSG.bindPopup("Gedung Serba Guna").openPopup()
+    namaGSG.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Poliklinik ITERA -->
+    var PoliklinikITERA = L.marker([-5.357728,105.315966]);
+    var namaPoliklinikITERA = PoliklinikITERA.bindPopup("Poliklinik ITERA").openPopup()
+    namaPoliklinikITERA.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Kantin BKL -->
+    var KantinBKL = L.marker([-5.357598,105.316519]);
+    var namaKantinBKL = KantinBKL.bindPopup("Kantin BKL").openPopup()
+    namaKantinBKL.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG RIMA -->
+    var RIMA = L.marker([-5.358613,105.321090]);
+    var namaRIMA = RIMA.bindPopup("Rumah Ibadah Multi Agama").openPopup()
+    namaRIMA.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Masjid Raya At Tanwir -->
+    var MasjidRayaAtTanwir = L.marker([-5.356767,105.318819]);
+    var namaMasjidRayaAtTanwir = MasjidRayaAtTanwir.bindPopup("Masjid Raya At-Tanwir").openPopup()
+    namaMasjidRayaAtTanwir.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Masjid Baitul Ilmi -->
+    var MasjidBaitulIlmi = L.marker([-5.359054,105.312624]);
+    var namaMasjidBaitulIlmi = MasjidBaitulIlmi.bindPopup("Masjid Baitul Ilmi").openPopup()
+    namaMasjidBaitulIlmi.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Kantin RK -->
+    var KantinRK = L.marker([-5.359432,105.312622]);
+    var namaKantinRK = KantinRK.bindPopup("Kantin RK").openPopup()
+    namaKantinRK.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Embung A -->
+    var EmbungA = L.marker([-5.357822,105.312614]);
+    var namaEmbungA = EmbungA.bindPopup("Embung A").openPopup()
+    namaEmbungA.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Embung B -->
+    var EmbungB = L.marker([-5.359044,105.308088]);
+    var namaEmbungB = EmbungB.bindPopup("Embung B").openPopup()
+    namaEmbungB.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Embung C -->
+    var EmbungC = L.marker([-5.359404,105.313704]);
+    var namaEmbungC = EmbungC.bindPopup("Embung C").openPopup()
+    namaEmbungC.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Embung D -->
+    var EmbungD = L.marker([-5.360221,105.320753]);
+    var namaEmbungD = EmbungD.bindPopup("Embung D").openPopup()
+    namaEmbungD.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG Embung E -->
+    var EmbungE = L.marker([-5.365216,105.316825]);
+    var namaEmbungE = EmbungE.bindPopup("Embung E").openPopup()
+    namaEmbungE.addTo(map);
+<!-- MENAMPILKAN NAMA Embung SUMATERA -->
+    var EmbungSumatera = L.marker([-5.370186,105.310329]);
+    var namaEmbungSumatera = EmbungSumatera.bindPopup("Embung SUMATERA").openPopup()
+    namaEmbungSumatera.addTo(map);	
+<!-- MENAMPILKAN NAMA Labirin -->
+    var Labirin = L.marker([-5.369667,105.312161]);
+    var namaLabirin = Labirin.bindPopup("Labirin").openPopup()
+    namaLabirin.addTo(map);
+    var baseMaps = {
+        "OSM":osm,
+	    "ESRI":Esri_WorldImagery,
+};
+var overlayMaps = {
+    "GKU 1" : GKU1,
+    "GKU 2" : GKU2,
+    "Gedung A" : A,
+    "Gedung B" : B,
+    "Gedung C dan D": CdanD,
+    "Gedung E": E,
+    "Gedung F": F,
+    "Laboratorium 1": Laboratorium1,
+    "Laboratorium 2": Laboratorium2,
+    "Laboratorium 3": Laboratorium3,
+    "Laboratorium OZT": LaboratoriumOZT,
+    "Asrama TB1" : AsramaTB1,
+    "Asrama TB2" : AsramaTB2,
+    "Asrama TB3" : AsramaTB3,
+    "Asrama TB4" : AsramaTB4,
+    "Asrama TB5" : AsramaTB5,
+    "Gedung Serba Guna" : GSG,
+    "Poliklinik ITERA" : PoliklinikITERA,
+    "Rumah Ibadah Multi Agama" : RIMA,
+    "Masjid Raya At-Tanwir" : MasjidRayaAtTanwir,
+    "Masjid Baitul Ilmi" : MasjidBaitulIlmi,
+    "Kantin RK" : KantinRK,
+    "Kantin BKL" : KantinBKL,
+    "Embung A" : EmbungA,
+    "Embung B" : EmbungB,
+    "Embung C" : EmbungC,
+    "Embung D" : EmbungD,
+    "Embung E" : EmbungE,
+    "Embung SUMATERA" : EmbungSumatera,
+    "Labirin" : Labirin,
+ 
+   
+};
+map.removeLayer(GKU1)
+map.removeLayer(GKU2)
+map.removeLayer(A)
+map.removeLayer(B)
+map.removeLayer(CdanD)
+map.removeLayer(E)
+map.removeLayer(F)
+map.removeLayer(Laboratorium1)
+map.removeLayer(Laboratorium2)
+map.removeLayer(Laboratorium3)
+map.removeLayer(LaboratoriumOZT)
+map.removeLayer(AsramaTB1)
+map.removeLayer(AsramaTB2)
+map.removeLayer(AsramaTB3)
+map.removeLayer(AsramaTB4)
+map.removeLayer(AsramaTB5)
+map.removeLayer(AsramaTB5)
+map.removeLayer(GSG)
+map.removeLayer(PoliklinikITERA)
+map.removeLayer(RIMA)
+map.removeLayer(MasjidRayaAtTanwir)
+map.removeLayer(MasjidBaitulIlmi)
+map.removeLayer(KantinRK)
+map.removeLayer(KantinBKL)
+map.removeLayer(EmbungA)
+map.removeLayer(EmbungB)
+map.removeLayer(EmbungC)
+map.removeLayer(EmbungD)
+map.removeLayer(EmbungE)
+map.removeLayer(EmbungSumatera)
+map.removeLayer(Labirin)
+//map.removeLayer(bundaranGKU)
+//map.removeLayer(polygon)
+
+L.control.layers(baseMaps,overlayMaps, {collapsed : false}).addTo(map);
+L.geoJSON(ged_itera).addTo(map);
+L.geoJSON(balam).addTo(map);
+ </script>  
